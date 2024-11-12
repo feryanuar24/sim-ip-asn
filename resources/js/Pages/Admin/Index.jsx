@@ -16,7 +16,7 @@ export default function Index({ users }) {
             confirmButtonText: "Ya, ubah!",
         }).then((result) => {
             if (result.isConfirmed) {
-                router.patch(route("profile.changeRole"), {
+                router.post(route("profile.changeRole"), {
                     id: id,
                     role: e.target.value,
                 });
@@ -41,7 +41,7 @@ export default function Index({ users }) {
             confirmButtonText: "Ya, reset!",
         }).then((result) => {
             if (result.isConfirmed) {
-                router.patch(route("profile.resetIP"), {
+                router.post(route("profile.resetIP"), {
                     id: id,
                 });
                 Swal.fire(

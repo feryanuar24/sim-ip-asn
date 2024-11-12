@@ -2,9 +2,10 @@ import Checkbox from "@/Components/Checkbox";
 import InputError from "@/Components/InputError";
 import InputLabel from "@/Components/InputLabel";
 import PrimaryButton from "@/Components/PrimaryButton";
+import SecondaryButton from "@/Components/SecondaryButton";
 import TextInput from "@/Components/TextInput";
 import GuestLayout from "@/Layouts/GuestLayout";
-import { Head, Link, useForm } from "@inertiajs/react";
+import { Head, Link, router, useForm } from "@inertiajs/react";
 import {
     useGoogleReCaptcha,
     GoogleReCaptchaProvider,
@@ -60,10 +61,10 @@ function LoginPage({ status, canResetPassword }) {
     };
 
     return (
-        <main className="bg-gray-100 w-full flex justify-center">
+        <main className="bg-gray-100 w-full flex justify-between">
             <Head title="Masuk" />
 
-            <section className="inline-flex">
+            <section className="inline-flex justify-between w-full">
                 <img
                     src="/images/gedung-singaperbangsa.png"
                     alt="Gedung Singaperbangsa"
@@ -142,7 +143,7 @@ function LoginPage({ status, canResetPassword }) {
                                 </label>
                             </div>
 
-                            <div className="mt-4 flex items-center justify-end">
+                            <div className="mt-4 space-y-4 flex lg:flex-row flex-col lg:items-center items-start justify-between">
                                 {canResetPassword && (
                                     <Link
                                         href={route("password.request")}
@@ -151,13 +152,23 @@ function LoginPage({ status, canResetPassword }) {
                                         Lupa kata sandi Anda?
                                     </Link>
                                 )}
-
-                                <PrimaryButton
-                                    className="ms-4"
-                                    disabled={processing}
-                                >
-                                    Masuk
-                                </PrimaryButton>
+                                <div className="space-x-4">
+                                    <SecondaryButton
+                                        onClick={() =>
+                                            router.get(route("register"))
+                                        }
+                                        className="lg:ms-4 ms-0"
+                                        disabled={processing}
+                                    >
+                                        Daftar
+                                    </SecondaryButton>
+                                    <PrimaryButton
+                                        className="lg:ms-4 ms-0"
+                                        disabled={processing}
+                                    >
+                                        Masuk
+                                    </PrimaryButton>
+                                </div>
                             </div>
                         </form>
                     </GuestLayout>

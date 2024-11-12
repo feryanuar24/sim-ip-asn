@@ -42,11 +42,11 @@ Route::middleware('auth', 'verified')->group(function () {
     Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile/edit', [ProfileController::class, 'update'])->name('profile.update');
+    Route::post('/profile/edit', [ProfileController::class, 'update'])->name('profile.update');
 
     Route::get('/admin', [ProfileController::class, 'index'])->name('profile.index');
-    Route::patch('/admin/change-role', [ProfileController::class, 'changeRole'])->name('profile.changeRole');
-    Route::patch('/admin/reset-ip', [ProfileController::class, 'resetIP'])->name('profile.resetIP');
+    Route::post('/admin/change-role', [ProfileController::class, 'changeRole'])->name('profile.changeRole');
+    Route::post('/admin/reset-ip', [ProfileController::class, 'resetIP'])->name('profile.resetIP');
 
     Route::get('/pelatihan', function () {
         return Inertia::render('Pelatihan/Index');

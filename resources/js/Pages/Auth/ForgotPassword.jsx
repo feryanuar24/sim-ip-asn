@@ -44,10 +44,10 @@ export default function ForgotPassword({ status }) {
     };
 
     return (
-        <main className="bg-gray-100 w-full flex justify-center">
+        <main className="bg-gray-100 w-full justify-between flex">
             <Head title="Lupa Kata Sandi" />
 
-            <section className="inline-flex">
+            <section className="inline-flex w-full justify-between">
                 <img
                     src="/images/gedung-singaperbangsa.png"
                     alt="Gedung Singaperbangsa"
