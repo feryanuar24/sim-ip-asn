@@ -16,7 +16,7 @@ class KinerjaController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $validated = $request->validate([
-            'hasil_penilaian' => 'required|string',
+            'hasil_penilaian' => 'required|string|in:Sangat Baik,Baik,Cukup,Kurang,Buruk',
         ]);
 
         $totalBobotMapping = [

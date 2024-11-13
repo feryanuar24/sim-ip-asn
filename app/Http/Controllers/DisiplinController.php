@@ -16,7 +16,7 @@ class DisiplinController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $validated = $request->validate([
-            'hukuman_disiplin' => 'required|string',
+            'hukuman_disiplin' => 'required|string|in:Tidak Pernah,Ringan,Sedang,Berat',
         ]);
 
         $totalBobotMapping = [

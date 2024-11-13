@@ -17,7 +17,7 @@ class KualifikasiController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $validated = $request->validate([
-            'pendidikan' => 'required|string',
+            'pendidikan' => 'required|string|in:S-3,S-2,S-1/D-IV,D-III,SLTA/D-II/D-I/Sederajat,Dibawah SLTA',
         ]);
 
         $totalBobotMapping = [

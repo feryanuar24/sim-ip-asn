@@ -83,7 +83,11 @@ class ProfileController extends Controller
      */
     public function submitIP(Request $request): Response
     {
-        $user = $request->user();
+        $request->validate([
+            'id' => 'required|exists:users,id',
+        ]);
+
+        $user = User::find($request->id);
 
         $ip = $user->kualifikasi->total_bobot + $user->kompetensi->total_bobot + $user->kinerja->total_bobot + $user->disiplin->total_bobot;
 
@@ -101,6 +105,10 @@ class ProfileController extends Controller
      */
     public function resetIP(Request $request): RedirectResponse
     {
+        $request->validate([
+            'id' => 'required|exists:users,id',
+        ]);
+
         $user = User::find($request->id);
 
         $user->update([
@@ -120,6 +128,11 @@ class ProfileController extends Controller
      */
     public function changeRole(Request $request): RedirectResponse
     {
+        $request->validate([
+            'id' => 'required|exists:users,id',
+            'role' => 'required|string|in:ASN,Admin',
+        ]);
+
         $user = User::find($request->id);
 
         $user->update([

@@ -124,8 +124,9 @@ export default function Dashboard() {
                         <img src="/images/info.png" alt="Ikon Info" />
                         <PrimaryButton
                             onClick={() => router.get(route("pelatihan.index"))}
+                            title="Bentuk Pelatihan non-Klasikal"
                         >
-                            Pelatihan
+                            Bentuk ...
                         </PrimaryButton>
                     </div>
                     {user.role === "Admin" && (
